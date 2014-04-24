@@ -1,8 +1,4 @@
-/**
- * Client side storage with utilizing document cookies to save and read JSON objects.
- * Serializing and deserializing of JSON is doing with help of native JSON implementation.
- */
-(function(JSON) {
+;(function(JSON) {
     var Helper = {
         /**
          * Private helper method used to save cookie
