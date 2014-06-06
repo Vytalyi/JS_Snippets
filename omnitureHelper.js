@@ -18,6 +18,7 @@
     /**
      * Initialization function - wait for global S object, wait no longer than 6 seconds
      * @param onloadCallback Callback function to be executed once Omniture will be available
+     * @param onErrorCallback Callback function to be executed in case of unavailability of global "s" object
      */
     omnitureHelper.prototype._init = function _init(onloadCallback, onErrorCallback) {
         var self = this;
