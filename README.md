@@ -7,11 +7,22 @@ How to use:
 
 <pre>
     // Initialize an instance of storage, related data will be read automatically
-    // If you want to override default cookie name and expire days parameters - pass "cookieName" and "cookieExpire" to constructor
-    var storage = new CookieStorage();
-    storage.data = { key1: "value1", key2: "value2" }; // work with data you want to store
-    storage.save(); // save data
-    storage.reset(); // clear data and remove related cookie from document
+    var storage = new CookieStorage({
+        cookieName: "myCookieName" // cookie name
+        , cookieExpire: 20 // cookie expire (days)
+    });
+
+    // work with data you want to store
+    storage.data = {
+        key1: "value1"
+        , key2: "value2"
+    };
+
+    // save data
+    storage.save();
+
+    // clear data and remove related cookie from document
+    storage.reset();
 </pre>
 
 
@@ -32,16 +43,17 @@ How to use:
 
             var self = this;
             $(function() {
-                // example #1 - track event
-                self.trackLink({
-                    linkTitle: "Filter_Ready"
-                    , linkTrackVars: "events"
-                    , linkTrackEvents: "event17"
-                    , events: "event17"
-                });
-
-                // example #2 - track variables
                 $("input[type=checkbox]").on("change", function(event) {
+
+                    // example #1 - track event
+                    self.trackLink({
+                        linkTitle: "Filter_Change"
+                        , linkTrackVars: "events"
+                        , linkTrackEvents: "event17"
+                        , events: "event17"
+                    });
+
+                    // example #2 - track variables
                     self.trackLink({
                         linkTitle: "Filter_Change"
                         , linkTrackVars: "eVar74,prop10"
