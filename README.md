@@ -29,9 +29,36 @@ How to use:
         accountID: "myOmnitureAccountID"
         , onLoad: function() {
             // do once Omniture will be ready
+
+            var self = this;
+            $(function() {
+                // example #1 - track event
+                self.trackLink({
+                    linkTitle: "Filter_Ready"
+                    , linkTrackVars: "events"
+                    , linkTrackEvents: "event17"
+                    , events: "event17"
+                });
+
+                // example #2 - track variables
+                $("input[type=checkbox]").on("change", function(event) {
+                    self.trackLink({
+                        linkTitle: "Filter_Change"
+                        , linkTrackVars: "eVar74,prop10"
+                        , props: (function() {
+                            return [
+                                { name: "eVar74", value: "SomeValue" }
+                                , { name: "prop10", value: "SomeAnotherValue" }
+                            ];
+                        })()
+                    });
+
+                });
+            });
         }
         , onError: function() {
             // do in case of error
+            console.log("OmnitureHelper: error occured");
         }
     });
 </pre>
