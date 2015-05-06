@@ -1,0 +1,1129 @@
+/*
+	This CSS file contains global styles shared across all pages.
+
+	Content:
+	-- Default elements styles
+	-- Useful styles
+	-- Styles shared across all pages
+	-- jQuery UI Combobox fix
+	-- jQuery Autocomplete fix
+	-- jQuery Tabs fix
+    -- jQuery Dialog fix
+	-- Custom checkboxes
+	-- Custom dropdowns
+	-- Custom dropdown-search
+	-- Custom attribute-search
+	-- Custom dropdown-buttons
+	-- Custom File Upload component
+	-- Custom Switcher component
+	-- Category Selection component and Quick Search
+*/
+
+
+/* -- Default elements styles */
+html,body {
+	margin: 0;
+	padding: 0;
+	height: 100%;
+}
+body {
+	color: #231f20;
+	min-height: 100%;
+	font-family: Bariol, Arial, Helvetica, sans-serif;
+	font-size: 14px;
+    /*zoom: 1.3;*/
+}
+table {
+	width: 100%;
+	border-spacing: 0;
+}
+table th, table td {
+	border: 1px solid black;
+}
+table tr:nth-child(even) {
+    background: #EEE;
+}
+table tr:nth-child(odd) {
+    background: #FFF;
+}
+table .breakwords {
+    word-break: break-all;
+}
+table td.centered {
+    text-align: center;
+}
+ul {
+	list-style: none;
+}
+a {
+	text-decoration: none;
+	outline: none;
+    color: #231f20;
+}
+a.underline {
+    text-decoration: underline;
+}
+
+/* -- Useful styles */
+.clear {
+	clear: both;
+}
+.error {
+    color: #bd1010;
+}
+input.error {
+    border-color: red !important;
+}
+input.error:focus {
+	outline: none;
+	border-color: red !important;
+}
+.success {
+    color: green;
+}
+.warning-message {
+    background-color: #FFDB70;    
+}
+.hidden {
+    display: none;
+}
+.left {
+    float: left;
+}
+.right {
+    float: right;
+}
+.grey {
+	color: #999999;
+}
+.form-field {
+	padding: 0.3em 0;
+}
+.form-field.left {
+    margin-right: 10px;
+}
+.form-field.right {
+    margin-left: 10px;
+}
+.form-field label {
+	width: 110px;
+	display: inline-block;
+	line-height: 2em;
+	vertical-align: top;
+}
+.form-field label.autowidth {
+    width: inherit;
+}
+.ignoreJS .form-field label {
+    line-height: inherit;
+}
+.btn-cta {
+    display: inline-block;
+    position: relative;
+    padding: 0.5em 48px 0.5em 1em;
+    margin: 0;
+    background: #4d2940 url("../img/btn-arrow-icon.png") no-repeat right center;
+    color: #fff !important;
+    border: 0;
+    font-size: 1.1em;
+    line-height: 1.1em;
+    cursor:  pointer;
+}
+.btn-secondary {
+    display: inline-block;
+    position: relative;
+    padding: 0.5em 1em 0.5em 1em;
+    margin: 0;
+    background: #a28629;
+    color: #fff !important;
+    border: 0;
+    font-size: 1.1em;
+    line-height: 1.1em;
+    cursor:  pointer;
+}
+.btn-cta[disabled="disabled"],
+.btn-secondary[disabled="disabled"] {
+    opacity: 0.5;
+}
+
+
+/* -- Styles shared across all pages */
+#container {
+	position: relative;
+	min-height: 100%;
+    width: 900px;
+	margin: 0 auto;
+}
+#topBg {
+	height: 7px;
+	background: #e8e7e5;
+}
+#header {
+	margin-top: 0.5em;
+	overflow: hidden;
+}
+#header .left img {
+    width: 180px;
+	height: auto;
+	border: none;
+}
+#loginBox {
+	overflow: hidden;
+    font-size: 1em;
+}
+#loginBox *, #breadcrumbs * {
+	color: #231f20;
+}
+#loginBox p {
+    margin: 10px 0;
+}
+#loginBox p.left {
+	padding: 0 18px 0 0;
+}
+#loginBox p.right {
+	padding: 0 0 0 18px;
+}
+#loginBox p.right a {
+	background: url("../img/logout-icon.png") left center no-repeat;
+	padding-left: 25px;
+}
+#loginBox .left {
+	border-right:1px solid #e8e8e8;
+}
+#loginBox .left strong, #loginBox .right a {
+	text-decoration: underline;
+}
+#loginForm {
+    position: fixed;
+    width: 305px;
+    height: 200px;
+    margin: 0 auto;
+    border: 4px solid #e8e7e5;
+    padding: 15px 30px;
+    top: 50%;
+    margin-top: -115px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+#loginForm .form-field {
+    position: relative;
+}
+#loginForm .access-note {
+    color: #d05051;
+    width: 229px;
+    margin-right: 0;
+    font-size: 1.1em;
+}
+#loginForm .login-button-wrapper {
+    margin-left: 0;
+}
+#loginForm .login-button-wrapper input[type="submit"] {
+    display: inline-block;
+    position: relative;
+    padding: 12px 17px 12px 17px;
+    margin: 0;
+    background: #4d2940;
+    color: #fff !important;
+    border: 0;
+    font-size: 15px;
+    line-height: 15px;
+    cursor:  pointer;
+}
+#loginForm input[type="text"],
+#loginForm input[type="password"] {
+    width: 100%;
+    background: #fafafa;
+    padding-left: 11px;
+    padding-right: 20px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    height: 30px;
+	line-height: 28px;
+    border: 1px solid #dedede;
+}
+#loginForm .login-icon {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 5px;
+    width: 17px;
+    height: 100%;
+    background: url("../img/login-username-icon.png") no-repeat right center;
+}
+#loginForm .password-icon {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 7px;
+    width: 14px;
+    height: 100%;
+    background: url("../img/login-password-icon.png") no-repeat right center;
+}
+#navigation ul {
+	margin: 1em 0 0 0;
+	padding: 0;
+	overflow: hidden;
+	background: #a28629;
+}
+#navigation ul li {
+	float: left;
+	width: 16.65%;
+    height: 40px;
+	line-height: 40px;
+	font-size: 1.1em;
+	text-align: center;
+}
+#navigation ul li.wide {
+	width: 30%;
+}
+#navigation ul li a {
+	display: block;
+	height: 100%;
+	color: #ffffff;
+}
+#navigation ul li a:hover, #navigation ul li.active {
+	background: #7d6103;
+}
+#breadcrumbs {
+	font-size: 1em;
+}
+#breadcrumbs a{
+	text-decoration: underline;
+}
+#aboutPage h1{
+	margin:10px 0;
+}
+#aboutPage p {
+	margin: 1em 0 1em;
+    font-size: 1em;
+}
+#content {
+	position: relative;
+    margin-top: 20px;
+    padding-bottom: 60px;
+}
+#content.bordertop {
+    border-top: 1px solid #e8e8e8;
+}
+#footer {
+	position: absolute;
+	height: 20px;
+	padding: 10px 0;
+    font-size: 1em;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	overflow: hidden;
+	border-top: 1px solid #e8e8e8;
+}
+#footer p {
+    margin: 0;
+}
+ul#indexContent {
+	padding: 0;
+    overflow: hidden;
+    margin-right: -50px;
+}
+ul#indexContent li {
+    position: relative;
+    float: left;
+    display: table;
+    width: 264px;
+    margin-right: 35px;
+    margin-bottom: 30px;
+    height: 264px;
+    padding: 6px;
+    text-align: center;
+    background: #E8E7E5;
+}
+ul#indexContent li:hover,
+ul#indexContent li:hover .top,
+ul#indexContent li:hover .bottom {
+    background: #4d2940;
+    color: #ffffff;
+}
+ul#indexContent a {
+    display: table-cell;
+    height: 100%;
+    width: 100%;
+    color: #000;
+}
+ul#indexContent a span.top {
+    display: block;
+    height: 30px;
+    line-height: 25px;
+    background: #E8E7E5;
+    font-size: 1.1em;
+    font-weight: bold;
+}
+ul#indexContent a span.bottom {
+    display: block;
+    position: absolute;
+    bottom: 0;
+    left: 5px;
+    right: 5px;
+    height: 40px;
+    padding-top: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+    background: #E8E7E5;
+    font-size: 1em;
+    text-align: left;
+}
+ul#indexContent li a.download {
+    background: #fff url("../img/nav-download-icon.jpg") no-repeat center;
+    background-size: 40%;
+}
+ul#indexContent li a.upload {
+    background: #fff url("../img/nav-upload-icon.jpg") no-repeat center;
+    background-size: 40%;
+}
+ul#indexContent li a.emergency {
+    background: #fff url("../img/nav-emergency-icon.jpg") no-repeat center;
+    background-size: 40%;
+}
+ul#indexContent li a.maintenance {
+    background: #fff url("../img/nav-maintenance-icon.jpg") no-repeat center;
+    background-size: 40%;
+}
+ul#indexContent li a.catredirects {
+    background: #fff url("../img/nav-url-icon.jpg") no-repeat center;
+    background-size: 40%;
+}
+ul#indexContent li a.reporting {
+    background: #fff url("../img/nav-reporting-icon.jpg") no-repeat center;
+    background-size: 40%;
+}
+ul#indexContent li a.attributes {
+    background: #fff url("../img/nav-upload-icon.jpg") no-repeat center;
+    background-size: 40%;
+}
+ul#indexContent li a.mergegpids {
+    background: #fff url("../img/nav-maintenance-icon.jpg") no-repeat center;
+}
+ul#indexContent li a.autosync {
+    background: #fff url("../img/nav-syncstate-icon.jpg") no-repeat center;
+    background-size: 40%;
+}
+ul#indexContent li a.audit {
+    background: #fff url("../img/nav-audit-icon.jpg") no-repeat center;
+    background-size: 40%;
+}
+ul#indexContent li a.prodModifReport {
+	background: #fff url("../img/nav-prodReport-icon.jpg") no-repeat center;
+	background-size: 40%;
+}
+ul#indexContent li a.syncstats {
+    background: #fff url("../img/nav-syncstate-icon.jpg") no-repeat center;
+    background-size: 40%;
+}
+ul#indexContent li a.jdaUploadStatus {
+    background: #fff url("../img/nav-reporting-icon.jpg") no-repeat center;
+}
+ul#indexContent li a.withdrawal {
+    background: #fff url("../img/nav-withdrawal-icon.jpg") no-repeat center;
+    background-size: 40%;
+}
+ul#indexContent li a.diagnostic {
+    background: #fff url("../img/nav-reporting-icon.jpg") no-repeat center;
+    background-size: 40%;
+}
+div.withdrawal-result {
+	padding-bottom: 1em;
+}
+
+form#talendForm {
+	width: 500px;
+	color: red;
+	font-size: 1.5em;
+	font-weight: bold;
+}
+#successMessage {
+	color: #009900;
+	font-weight: bold;
+	margin-bottom: 1em;
+}
+.ignoreJS #taxonomyHierarchy input[type="submit"] {
+    margin: 0;
+}
+#taxonomyHierarchy .taxonomy-node-row {
+	margin: 5px 0;
+}
+#taxonomyHierarchy .taxonomy-row-title {
+	display: inline-block;
+	font-weight: bold;
+	min-width: 100px;
+}
+#fieldLevelErrorRows, #productLevelErrorRows {
+	max-height: 300px;
+}
+#controlTableRows {
+	max-height: 400px;
+}
+#fieldLevelErrorRows, #productLevelErrorRows, #controlTableRows {
+	display: inline-block;
+	border: 1px solid;
+	overflow-y: scroll;
+}
+form#deleteCategoryForm {
+	clear: both;
+}
+.hasUnreviewedErrorLines {
+    background-color: #FE4B4B !important;
+}
+.has-unresolved-error,
+.has-unresolved-error td {
+	background-color: #FE4B4B !important;
+}
+.strip-table th {
+    background: #b3b0ab;
+    border-bottom: 2px solid #b3b0ab;
+    border-left: 1px solid #f9f9f9;
+    border-top: 0;
+    border-right: 0;
+    padding: 10px;
+}
+.strip-table tr th:first-child,
+.strip-table tr td:first-child {
+    border-left: 0;
+}
+.strip-table td {
+    background: #f3f3f3;
+    padding: 10px;
+    border-right: 0;
+    border-top: 0;
+    border-bottom: 2px solid #b3b0ab;
+    border-left: 1px solid #f9f9f9;
+}
+.page-description {
+    margin: 0 0 0.5em 0;
+    font-size: 1em;
+}
+.pagination-wrapper {
+    margin: 0.5em 0;
+    padding: 0.5em 1em;
+    border: 1px solid #b3b0ab;
+}
+.pagination-wrapper a {
+    color: #222222;
+}
+.pagination-wrapper .active {
+    font-weight: bold;
+}
+#backToMainBottomFixed {
+    margin-top: 1em;
+    width: 900px;
+}
+
+
+
+/* -- jQuery UI Combobox fix */
+.ui-combobox {
+    position: relative;
+    display: inline-block;
+}
+.ui-combobox-toggle {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    margin-left: -1px;
+    padding: 0;
+    width: 1.8em;
+    border-color: #aaa;
+}
+.ui-combobox-input {
+    margin: 0;
+    padding: 1px 0;
+    border-color: #aaa;
+    font-size: 1em;
+    font-family: Helvetica, sans-serif;
+    height: 1.2em;
+}
+
+
+/* -- jQuery Autocomplete fix */
+.ui-autocomplete.ui-menu {
+	max-height: 25em;
+	overflow-y: auto;
+	overflow-x: hidden;
+	padding-bottom: 1px;
+}
+.ui-autocomplete .ui-menu-item {
+	white-space: nowrap;
+	border: 0 !important;
+}
+
+
+/* -- jQuery Tabs fix */
+.ui-tabs .ui-tabs-nav li.ui-tabs-active .ui-tabs-anchor, .ui-tabs .ui-tabs-nav li.ui-state-disabled .ui-tabs-anchor, .ui-tabs .ui-tabs-nav li.ui-tabs-loading .ui-tabs-anchor {
+	cursor: pointer;
+}
+.ui-widget input, .ui-widget select, .ui-widget textarea, .ui-widget button {
+    font-family: Bariol, Arial, Helvetica, sans-serif;
+}
+.ui-widget {
+	font-family: Arial, Helvetica, sans-serif;
+    font-size: 1em;
+}
+.ui-widget-content {
+	border: 0;
+	border-radius: 0;
+}
+.ui-tabs .ui-tabs-panel {
+	border: 12px solid #e8e7e5;
+	border-radius: 0;
+}
+.ui-tabs .ui-widget-header {
+	border: 0;
+	border-radius: 0;
+	background: none;
+}
+.ui-tabs .ui-tabs-nav li {
+	margin: 0;
+}
+.ui-tabs .ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default {
+	border: 0;
+	border-radius: 0;
+	background: #b3b0ab;
+	opacity: 1;
+}
+.ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default a {
+	color: #ffffff;
+}
+.ui-state-active, .ui-widget-content .ui-state-active, .ui-widget-header .ui-state-active a {
+	color: #231f20;
+}
+.ui-state-active, .ui-widget-content .ui-state-active, .ui-widget-header .ui-state-active {
+	border: 0;
+	border-radius: 0;
+	background: #e8e7e5;
+}
+.ui-tabs .ui-tabs-nav li {
+    border-left: 2px solid #e8e7e5;
+}
+.ui-tabs .ui-tabs-nav li:first-child {
+    border-left: 0;
+}
+.ui-tabs .ui-tabs-nav li.ui-tabs-active + li {
+    border-left: 0;
+}
+.ui-tabs .ui-tabs-nav li.ui-tabs-active {
+	line-height: 2.5em;
+	margin-top: -0.5em;
+}
+.ui-helper-reset {
+	line-height: 2em;
+    font-size: 1.1em;
+}
+.ui-tabs .ui-tabs-nav {
+	padding: 0;
+}
+.ui-tabs .ui-tabs-nav .ui-tabs-anchor {
+	padding: .5em 60px;
+}
+
+
+/* -- jQuery Dialog fix */
+.ui-dialog.ui-widget .ui-dialog-titlebar .ui-dialog-titlebar-close{
+    border: 1px solid #d3d3d3;
+    background: #e6e6e6;
+    font-weight: normal;
+    color: #555555;
+}
+.ui-dialog.ui-widget .ui-dialog-titlebar .ui-dialog-titlebar-maxmin{
+    position: absolute;
+    height: 20px;
+    width: 20px;
+    padding: 1px;
+    border: 1px solid #d3d3d3;
+    margin-top: -10px;
+    background: #e6e6e6;
+    font-weight: normal;
+    color: #555555;
+    right: 2.2em;
+    top: 50%;
+}
+.ui-button-icon-primary.ui-icon.ui-icon-circle-zoomin:hover{
+    background: url("ui-lightness/images/ui-icons_222222_256x240.png") -176px -192px;
+}
+
+/* -- Custom checkboxes */
+.checkbox {
+	display: inline-block;
+	float: left;
+	height: 28px;
+	width: 23px;
+	margin-right: 7px;
+	background: url("../img/checkbox.png") center no-repeat;
+    background-size: 80%;
+}
+.checkbox.checked {
+	background: url("../img/checkbox-checked.png") center no-repeat;
+    background-size: 80%;
+}
+.checkbox + label {
+    line-height: 35px;
+    width: inherit;
+}
+
+
+/* -- Custom dropdowns */
+.dropdown {
+	position: relative;
+	display: inline-block;
+	width: 300px;
+	height: 35px;
+	border: 1px solid #b3b0ab;
+	padding: 0px 0px 0px 1em;
+}
+.dropdown .dropdown-opener {
+	margin: 0;
+	padding-right: 25px;
+	overflow: hidden;
+	background: url("../img/dropdown-opener.png") 95% center no-repeat;
+    background-size: 7%;
+    word-break: break-all;
+}
+.dropdown ul {
+	display: block;
+	position: absolute;
+	max-height: 300px;
+    min-width: 100%;
+	overflow-y: auto;
+	margin: 0;
+	padding: 0 !important;
+	top: 20px;
+	left: -1px;
+	border: 1px solid #b3b0ab;
+	background: #fff;
+	z-index: 100;
+}
+.dropdown ul.closed {
+	display: none;
+}
+.dropdown ul li.disabled {
+    color: #999999;
+}
+.dropdown ul li {
+	padding: 3px 1.5em 3px 1em;
+	height: 1.2em;
+	line-height: 1.2em;
+    white-space: nowrap;
+	overflow: hidden;
+}
+.dropdown ul li[data-selected="selected"] {
+	background: #e8e7e5;
+}
+.dropdown ul li:hover {
+	background: #e8e7e5;
+}
+.dropdown ul li.disabled:hover {
+	background: none;
+}
+
+
+/* -- Custom dropdown-search */
+.supplier-search {
+    position: relative;
+    display: inline-block;
+}
+.supplier-search input[type="text"] {
+    height: 2em;
+    width: 245px;
+	padding: 0 0 0 1em;
+}
+.supplier-search input[type="text"]::-ms-clear {
+    display: none;
+}
+.supplier-search-icon {
+    position: absolute;
+    display: block;
+    bottom: 0;
+    right: 0.5em;
+    top: 0.4em;
+    width: 19px;
+    height: 19px;
+    background: url("../img/search-icon.png") no-repeat center center;
+    background-size: 80%;
+}
+.supplier-search ::-webkit-input-placeholder {
+   font-style: italic;
+}
+.supplier-search :-moz-placeholder { /* Firefox 18- */
+   font-style: italic;
+}
+.supplier-search ::-moz-placeholder {  /* Firefox 19+ */
+   font-style: italic;
+}
+.supplier-search:-ms-input-placeholder {
+   font-style: italic;
+}
+.supplier-autocomplete {
+    max-height: 200px;
+    overflow-y: auto;
+    overflow-x: hidden; /* prevent horizontal scrollbar */
+    border: 1px solid #e5e5e5;
+}
+.supplier-autocomplete li {
+	height: 1.6em;
+	line-height: 1.6em;
+    padding: 0 !important;
+	border-top: 1px solid #e5e5e5;
+	border-bottom: 0;
+	border-right: 0;
+	margin-right: 10px;
+	overflow: hidden;
+}
+.supplier-autocomplete li a {
+    display: block;
+    box-sizing: border-box;
+    padding-left: 0.4em;
+}
+.supplier-autocomplete li:hover {
+    background: #e8e7e5;
+}
+.supplier-autocomplete .ui-autocomplete li a {
+	padding: 0 12px;
+}
+.supplier-autocomplete li a:hover {
+    background: #e8e7e5;
+}
+.supplier-autocomplete .ui-state-hover,
+.supplier-autocomplete .ui-widget-content .ui-state-hover,
+.supplier-autocomplete .ui-widget-header .ui-state-hover,
+.supplier-autocomplete .ui-state-focus,
+.supplier-autocomplete .ui-widget-content .ui-state-focus,
+.supplier-autocomplete .ui-widget-header .ui-state-focus {
+	background: none;
+}
+
+
+/* -- Custom attribute-search */
+.attribute-search {
+    position: relative;
+    display: inline-block;
+}
+.attribute-search input[type="text"] {
+    width: 245px;
+	padding: 0 0 0 1em;
+	height: 2em;
+}
+.attribute-search input[type="text"]::-ms-clear {
+    display: none;
+}
+.attribute-search-icon {
+    position: absolute;
+    display: block;
+    right: 0.5em;
+    top: 0.4em;
+    bottom: 0;
+    width: 19px;
+    height: 19px;
+    background: url("../img/search-icon.png") no-repeat center center;
+    background-size: 80%;
+}
+.attribute-search ::-webkit-input-placeholder {
+   font-style: italic;
+}
+.attribute-search :-moz-placeholder { /* Firefox 18- */
+   font-style: italic;
+}
+.attribute-search ::-moz-placeholder {  /* Firefox 19+ */
+   font-style: italic;
+}
+.attribute-search:-ms-input-placeholder {
+   font-style: italic;
+}
+.attribute-autocomplete {
+    max-height: 200px;
+    overflow-y: auto;
+    overflow-x: hidden; /* prevent horizontal scrollbar */
+    border: 1px solid #e5e5e5;
+}
+.attribute-autocomplete li {
+    height: 1.2em;
+	line-height: 1.2em;
+	border-top: 1px solid #e5e5e5;
+	border-bottom: 0;
+	border-right: 0;
+	margin-right: 10px;
+	overflow: hidden;
+}
+.attribute-autocomplete li:hover {
+    background: #e8e7e5;
+}
+.attribute-autocomplete .ui-autocomplete li a {
+	padding: 0 12px;
+}
+.attribute-autocomplete li a:hover {
+    background: #e8e7e5;
+}
+.attribute-autocomplete .ui-state-hover,
+.attribute-autocomplete .ui-widget-content .ui-state-hover,
+.attribute-autocomplete .ui-widget-header .ui-state-hover,
+.attribute-autocomplete .ui-state-focus,
+.attribute-autocomplete .ui-widget-content .ui-state-focus,
+.attribute-autocomplete .ui-widget-header .ui-state-focus {
+	background: none;
+}
+
+
+/* -- Custom dropdown-buttons */
+.buttons-dropdown {
+    position: relative;
+    display: inline-block;
+    font-size: 1em;
+}
+/*
+.buttons-dropdown .buttons-dropdown-opener {
+    width: 100px;
+    display: inline-block;
+    padding: 0 40px 0 0;
+    height: 38px;
+    line-height: 38px;
+    text-align: center;
+    background: url("../img/btn-next.png") center no-repeat;
+    color: #fff;
+    cursor: pointer;
+}
+*/
+.buttons-dropdown .buttons-dropdown-list {
+    display: none;
+}
+.buttons-dropdown .buttons-dropdown-list.expanded {
+    position: absolute;
+    margin: 0 1px;
+    padding: 0;
+    border: 1px solid #000;
+    background: #fff;
+    bottom: 2.2em;
+    right: -1px;
+    display: block;
+}
+.buttons-dropdown .buttons-dropdown-list li {
+    height: 35px;
+	line-height: 35px;
+    position: relative;
+    height: 2em;
+	line-height: 2em;
+    margin: 0;
+	border-top: 1px solid #e5e5e5;
+	border-bottom: 0;
+	overflow: hidden;
+}
+.buttons-dropdown .buttons-dropdown-list li input[type="submit"] {
+    display: block;
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0 21.75px;
+    text-align: left;
+    background: none;
+    border: 0;
+    color: #000;
+    outline: none;
+}
+.buttons-dropdown .buttons-dropdown-list li input[type="submit"]:hover {
+    background: #e8e7e5;
+    cursor: pointer;
+}
+.buttons-dropdown .buttons-dropdown-list li input[disabled="disabled"] {
+    opacity: 0.5;
+}
+.buttons-dropdown .buttons-dropdown-list li input[disabled="disabled"]:hover {
+    background: none;
+    cursor: default;
+}
+
+
+/* -- Custom File Upload component */
+.file-upload-wrapper {
+    display: inline-block;
+    width: 260px;
+    padding: 0;
+}
+.file-upload-wrapper input[type="file"] {
+    display: none;
+}
+.file-upload-wrapper .file-upload-label {
+    display: inline-block;
+    position: relative;
+    float: right;
+    width: 100px;
+    padding: 0.5em 0;
+    margin: 0;
+    background: #4d2940;
+    color: #fff !important;
+    border: 0;
+    text-align: center;
+    font-size: 1em;
+    line-height: 1em;
+    cursor:  pointer;
+}
+.file-upload-wrapper .file-upload-info {
+    line-height: 2em;
+    float: left;
+    width: 55%;
+    font-style: italic;;
+    word-wrap: break-word;
+}
+
+
+/* -- Custom Switcher component */
+.switch-wrapper {
+    display: inline-block;
+    text-align: left;
+}
+.switch-wrapper .switch-toggle-wrapper {
+    display: inline-block;
+    width: 45px;
+    height: 15px;
+    padding: 5px;
+    background: #e8e7e6;
+    border: 2px solid #b3b0ab;
+    border-radius: 20px;
+}
+.switch-wrapper .switch-toggler {
+    background: #4d2940;
+    display: inline-block;
+    height: 15px;
+    width: 15px;
+    border-radius: 10px;
+}
+.switch-wrapper.state-off .switch-toggler {
+    background: red;
+}
+.switch-wrapper.state-on .switch-toggler {
+    background: green;
+}
+.switch-wrapper span {
+    display: inline-block;
+    line-height: 29px;
+    margin: 0 7px;
+}
+.switch-wrapper .switch-label-on {
+    float: right;
+}
+.switch-wrapper .switch-label-off {
+    float: left;
+}
+#attributeDescriptionPopUp {
+    display: none;
+	position: absolute;
+	padding: 10px;
+	background-color: rgba(170, 170, 170, 0.9);
+	z-index: 100;
+}
+#attributeDescriptionPopUp label {
+	width: 100% !important;
+}
+#attributeDescriptionPopUp  textarea{
+	width: 25em;
+	max-width: 25em;
+}
+
+
+/* -- Category Selection component */
+input.category-quick-search {
+	width: 245px !important;
+}
+.category-selector .categories-wrapper label {
+	width: 114px;
+}
+.quick-search-autocomplete.ui-autocomplete {
+	border: 1px solid #e5e5e5;
+}
+
+
+/* -- JDA Upload Status Page Rules */
+.strip-table tr th.notfirst {
+	border-left: 1px solid #f9f9f9;
+}
+
+/* -- Merge Gpids Page Rules */
+.form-field-top-label label {
+	display: block;
+	margin: 2em 0 0.5em;
+}
+
+#mergeGpids .form-field-top-label {
+	margin-right: 2em;
+}
+
+#mergeGpids .options-submit {
+	margin-top: 2em;
+}
+#getNoAttrsLeafNodeCsvReportButton {
+	margin-top: 20px;
+}
+#reportTable {
+	display: none;
+	border: solid 6px #e8e7e5;
+	overflow-y: scroll;
+}
+#reportTable table td.noAttrsLeafNodeReportTableBodyCell{
+	border-top: none;
+	border-right: none;
+	border-bottom: solid 2px #b3b0ab;
+	border-left: solid 1px lightgrey;
+}
+.noAttrsLeafNodeReportTableHeaderCell{
+	height: 40px;
+	background-color: #b3b0ab;
+	border-right: none;
+	border-left: solid 1px lightgrey;
+}
+.noAttrsLeafNodeReportTableBodyCell{
+	background-color: #f3f3f3;
+	width: 450px;
+}
+.noAttrsLeafNodeReportInnerTableBodyCell{
+	background-color: #f3f3f3;
+	border: none;
+}
+
+/* -- Product modification report page */
+.dateHolder{
+	margin-bottom: 0.6em;
+}
+.dateHolder input {
+	width: 230px;
+	padding: 0.5em 0 0.5em 1em;
+	border: 1px solid #b3b0ab;
+	height: 1em;
+}
+#productModificationReport label{
+	width: 95px;
+	display: inline-block;
+	line-height: 2em;
+	vertical-align: top;
+}
+#productModificationReport input[type='submit']{
+	float: right;
+}
+#productModificationReport input[disabled="disabled"]{
+	opacity: 0.5;
+}
+#downstreamCatalogs label{
+	width: 91px;
+}
+#downstreamCatalogs .dropdown{
+	width: 230px !important;
+	margin-bottom: 1em;
+}
+#downstreamCatalogs .dropdown-opener{
+	background: url("../img/dropdown-opener.png") 97% center no-repeat;
+	background-size: auto;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
+#downstreamCatalogsSelect{
+	padding: 0 0 0 1em;
+	height: 29px;
+}
+.ui-datepicker table{
+	border: 1px solid #b3b0ab;
+	border-top: 0;
+}
